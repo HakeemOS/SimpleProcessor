@@ -1,0 +1,10 @@
+# compile vhdl design source files
+vhdl myLib  \
+"../../../../../PackagesVHDL/PackagesVHDL.srcs/sources_1/new/paraPcr_p.vhd" \
+
+vhdl xil_defaultlib  \
+"../../../../SimpleProcessor.srcs/sources_1/new/ctrlCCT_s.vhd" \
+"../../../../SimpleProcessor.srcs/sim_1/new/ctrlCCT_tb.vhd" \
+
+# Do not sort compile order
+nosort

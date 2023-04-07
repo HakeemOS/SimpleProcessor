@@ -1,0 +1,12 @@
+#-----------------------------------------------------------
+# Vivado v2020.2 (64-bit)
+# SW Build 3064766 on Wed Nov 18 09:12:45 MST 2020
+# IP Build 3064653 on Wed Nov 18 14:17:31 MST 2020
+# Start of session at: Thu Apr  6 11:09:29 2023
+# Process ID: 126316
+# Current directory: C:/Users/squid/OneDrive/Documents/Vivado/2023/SimpleProcessor/SimpleProcessor.runs/synth_1
+# Command line: vivado.exe -log testCtrl_s.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source testCtrl_s.tcl
+# Log file: C:/Users/squid/OneDrive/Documents/Vivado/2023/SimpleProcessor/SimpleProcessor.runs/synth_1/testCtrl_s.vds
+# Journal file: C:/Users/squid/OneDrive/Documents/Vivado/2023/SimpleProcessor/SimpleProcessor.runs/synth_1\vivado.jou
+#-----------------------------------------------------------
+source testCtrl_s.tcl -notrace
