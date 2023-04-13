@@ -58,10 +58,10 @@ component ALU_s is
 end component; 
 
 -- signals --
-signal ir_s : std_logic_vector (4 downto 0) := "00000";  
-signal enR1, enR0, enIN, enOUT, enA, enG_s, enIR_s : std_logic := '0'; 
+signal ir : std_logic_vector (4 downto 0) := "00000";  
+signal enR1, enR0, enIN, enOUT, enA, enG, enIR : std_logic := '0'; 
 signal sel : std_logic_vector (1 downto 0):= "00"; 
-signal ALUop_s : std_logic_vector (3 downto 0) := "0000";
+signal ALUop_t : std_logic_vector (3 downto 0) := "0000";
 signal r0OUT, r1OUT, rINOUT, rAOUT, ALUOUT, rGOUT, muxBus, rOUT_OUT : std_logic_vector (3 downto 0) := "0000";
 signal done_t : std_logic := '0'; 
 signal f : std_logic_vector (2 downto 0) := "000"; 
@@ -76,8 +76,8 @@ begin
     nBitReg(enR0, sig0, regRst, clk, muxBus, r0OUT); 
     nBitReg(enA, sig0, regRst, clk, muxBus, rAOUT); 
     nBitReg(enOUT, sig0, regRst, clk, muxBus, rOUT_OUT); 
-    nBitReg(enG_s, sig0, regRst, clk, ALUOUT, rGOUT); 
-    nBitReg(enIR_s, sig0, regRst, clk, instr, ir);
+    nBitReg(enG, sig0, regRst, clk, ALUOUT, rGOUT); 
+    nBitReg(enIR, sig0, regRst, clk, instr, ir);
 
     f 
     
@@ -87,7 +87,7 @@ begin
         port map ( 
             a => rAOUT, 
             b => muxBus, 
-            ALUop => ALUop_s, 
+            ALUop => ALUop_t, 
             q => ALUOUT
         ); 
 
@@ -136,26 +136,26 @@ begin
         end if ;
     end process ; -- trns
 
-    output : process( stt, clk, sel, enA, enG_s, enOUT, enIN, f, r, w, ALUop_s, done_t )
+    output : process( stt, clk, sel, enA, enG, enOUT, enIN, f, r, w, ALUop_t, done_t )
     begin
         -- defaults --
-        enIR_s <= '0'; 
+        enIR <= '0'; 
         enIN <= '0'; 
         enX <= '0'; 
         sel <= "00"; 
         enA <= '0';
-        enG_s <= '0'; 
+        enG <= '0'; 
         enOUT <= '0';  
         enIN <= '0';  
-        ALUop_s <= "0000";  
-        done_s <= '0';  
+        ALUop_t <= "0000";  
+        done_t <= '0';  
 
 
         case( stt ) is
         
             when s0 =>
                 if (w = '                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           ') then
-                    enIR_t <= '1';
+                    enIR <= '1';
                 end if ;  
             when s1 =>
                 case( f ) is
@@ -169,7 +169,7 @@ begin
                     when "110" => 
                         sel <= '1'&r(0);
                         ALUop_t <= "0100"; 
-                        enG_t <= '1'; 
+                        enG <= '1'; 
                     when "111" => 
                         sel <= '1'&r(0);
                         enOUT <= '1'; 
@@ -179,21 +179,21 @@ begin
                 end case ;        
             when s2_1 =>
                 sel <= '1'&r(1);
-                enG_t <= '1';
+                enG <= '1';
                 ALUop_t <= "0110"; 
             when s2_2 =>
                 sel <= "01"; 
                 enX <= '1'; 
             when s3_1 =>
                 sel <= "00"; 
-                enG_t <= '1'; 
+                enG <= '1'; 
                 ALUop_t <= "0110"; 
             when s3_2 =>
                 sel <= "01"; 
                 enX <= '1'; 
             when s4_1 =>
                 sel <= '1'&r(1); 
-                enG_t <= '1'; 
+                enG <= '1'; 
                 ALUop_t <= "1111"; 
             when s4_2 =>
                 sel <= "01"; 
