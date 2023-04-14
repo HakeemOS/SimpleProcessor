@@ -78,8 +78,7 @@ begin
     nBitReg(enOUT, sig0, regRst, clk, muxBus, rOUT_OUT); 
     nBitReg(enG, sig0, regRst, clk, ALUOUT, rGOUT); 
     nBitReg(enIR, sig0, regRst, clk, instr, ir);
-
-    f 
+ 
     
     -- component maps --
     ALU0 : ALU_s 
