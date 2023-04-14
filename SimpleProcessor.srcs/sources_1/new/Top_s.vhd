@@ -78,6 +78,9 @@ begin
     nBitReg(enOUT, sig0, regRst, clk, muxBus, rOUT_OUT); 
     nBitReg(enG, sig0, regRst, clk, ALUOUT, rGOUT); 
     nBitReg(enIR, sig0, regRst, clk, instr, ir);
+
+    f <= ir (4 downto 2); 
+    r <= ir (1 downto 0);  
  
     
     -- component maps --
