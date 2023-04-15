@@ -1,10 +1,11 @@
 # compile vhdl design source files
+vhdl xil_defaultlib  \
+"../../../../SimpleProcessor.srcs/sources_1/new/ALU_s.vhd" \
+
 vhdl myLib  \
 "../../../../../PackagesVHDL/PackagesVHDL.srcs/sources_1/new/paraPcr_p.vhd" \
 
 vhdl xil_defaultlib  \
-"../../../../SimpleProcessor.srcs/sources_1/new/ctrlCCT_s.vhd" \
-"../../../../../PackagesVHDL/PackagesVHDL.srcs/sources_1/new/nBitReg_s.vhd" \
 "../../../../SimpleProcessor.srcs/sources_1/new/testCtrl_s.vhd" \
 "../../../../SimpleProcessor.srcs/sim_1/new/testCtrl_tb.vhd" \
 
